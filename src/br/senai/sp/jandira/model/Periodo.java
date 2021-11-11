@@ -5,7 +5,7 @@ public enum Periodo {
 	MANHA("Manhã"), TARDE("Tarde"), NOITE("Noite");
 
 	private Periodo(String descricao) {
-
+		this.descricao = descricao;
 	}
 
 	private String descricao;
