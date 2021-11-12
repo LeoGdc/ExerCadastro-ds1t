@@ -11,6 +11,8 @@ import java.util.EnumSet;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -131,6 +133,19 @@ public class FrameCadastroAlunos extends JFrame {
 					btnSalvar.setEnabled(false);
 					JOptionPane.showMessageDialog(null, "A Turma está completa", "Cheio", JOptionPane.ERROR_MESSAGE);
 				}
+
+			}
+		});
+
+		listAlunos.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				Aluno aluno = turma.listarAluno(listAlunos.getSelectedIndex());
+				txtMatricula.setText(aluno.getMatricula());
+				txtNome.setText(aluno.getNome());
+
+				comboPeriodo.setSelectedIndex(aluno.getPeriodo().ordinal());
 
 			}
 		});
